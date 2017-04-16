@@ -1,12 +1,11 @@
-(defun format-time-millis (time)
-  (truncate (* 1000 (float-time time))))  
+(defun ycw/time-subtract-ms (a b)
+  (truncate (* 1000 (float-time (time-subtract a b)))))
   
-(defun print-init-time ()
+(defun ycw/print-init-time ()
   (message "init completed in %s ms"
-           (- (format-time-millis after-init-time)
-              (format-time-millis before-init-time))))
+           (ycw/time-subtract-ms after-init-time before-init-time)))
       
-(add-hook 'after-init-hook 'print-init-time)
+(add-hook 'after-init-hook 'ycw/print-init-time)
 
 
 (provide 'benchmark)
