@@ -30,18 +30,18 @@
 (require 'runtime-benchmark)
 (require 'runtime-pkg)
 
-(setq inhibit-default-init t)
+
 
 
 ;;
 ; Load up other packages
 ;;
-(run-with-idle-timer
- 1 nil #'(lambda () (require 'cnf-backup)
-                    (require 'cnf-auto-save)))
+(run-with-idle-timer 1 nil #'(lambda ()
+   ;(require 'pretty-lambdada)
+
+   ))
 
 
-(setq garbage-collection-messages t)
 
 
 (setq custom-file (expand-file-name "custom.el" (concat user-emacs-directory "runtime")))

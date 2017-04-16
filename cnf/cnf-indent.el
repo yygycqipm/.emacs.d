@@ -1,6 +1,4 @@
-;;
-; Init indent config
-;;
+;; cnf-indent.el
 
 (setq-default indent-tabs-mode t)
 (setq default-tab-width 4)
@@ -21,4 +19,6 @@
                ))
   (add-hook hook '(lambda () (setq indent-tabs-mode nil))))
 
-(provide 'indent)
+(provide 'cnf-indent)
+
+;; cnf-indent.el ends here

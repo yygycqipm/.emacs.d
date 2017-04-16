@@ -2,31 +2,9 @@
 ; Reconfigure some default reference
 ;;
 
-;; locale
-(set-language-environment 'utf-8)
-(setq locale-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-selection-coding-system 
-  (if (eq system-type 'windows-nt) 'utf-16-le 'utf-8))
-(prefer-coding-system 'utf-8)
 
-;; appearance
-(when (fboundp 'menu-bar-mode)
-  (menu-bar-mode -1))
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-(when (fboundp 'set-scroll-bar-mode)
-  (set-scroll-bar-mode nil))
-(when (fboundp 'tooltip-mode)
-  (tooltip-mode -1))
 
-  
-(setq
- indicate-empty-lines t)
 
-(setq-default
- cursor-type 'bar)
 
 
 
@@ -36,18 +14,16 @@
 
 
 ;; behavior       
-(fset 'yes-or-no-p 'y-or-n-p)
+
 
 (setq
  case-fold-search t
- make-backup-files nil
- auto-save-default nil
- backup-by-copying t
  ring-bell-function 'ignore
  inhibit-startup-screen t
  initial-scratch-message nil)
-  
 
+
+  
            
 ;; editor   
 

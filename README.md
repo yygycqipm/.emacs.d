@@ -1,0 +1,4 @@
+
+
+var:xxx
+*var:xxx*
