@@ -1,1 +1,0 @@
-(setq default-directory "~/workspace/")

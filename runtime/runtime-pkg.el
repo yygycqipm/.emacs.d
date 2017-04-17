@@ -11,11 +11,10 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
-                         
-(unless package-archive-contents (package-refresh-contents))
 
 (defun require-pkg (pkg)
-  ((unless (package-install-p pkg) (package-install pkg))))
+  (unless package-archive-contents (package-refresh-contents))
+  (unless (package-installed-p pkg) (package-install pkg)))
 
 (provide 'runtime-pkg)
 

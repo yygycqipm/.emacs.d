@@ -1,31 +1,14 @@
-;;
-; Reconfigure some default reference
-;;
-
-
-
-
-
-
+(setq default-directory "~/workspace/")
 
 ; frame-title-format
 ; mode-line-format
 
 
 
-;; behavior       
 
 
-(setq
- case-fold-search t
- ring-bell-function 'ignore
- inhibit-startup-screen t
- initial-scratch-message nil)
 
-
-  
-           
-;; editor   
+;; editor
 
 (delete-selection-mode 1)
 (show-paren-mode 1)
@@ -45,17 +28,18 @@
  mouse-yank-at-point t
  x-select-enable-clipboard t
  large-file-warning-threshold (* 100 1024 1024))
- 
+
 (setq-default
  indent-tabs-mode nil
  tab-width 4)
-        
+
 
 (set-face-attribute 'default nil
                     :family "Consolas"
                     :width 'normal
                     :height 110
-                    :weight 'normal) 
+                    :weight 'normal)
 
- 
-(provide 'setting)
+
+
+(provide 'cnf-edit)

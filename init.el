@@ -9,43 +9,51 @@
 
 
 ;;
-; Optimize the GC to accelerate startup
+; Optimize garbage collection
 ;;
-(defconst var:gc-cons-threshold gc-cons-threshold)
+(defconst *gc-cons-threshold gc-cons-threshold)
 (setq gc-cons-threshold (* 128 1024 1024))
 (add-hook 'after-init-hook
-          (lambda () (setq gc-cons-threshold var:gc-cons-threshold)))
+          (lambda () (setq gc-cons-threshold *gc-cons-threshold)))
 
 ;;
-; Load paths
+; Load path
 ;;
 (add-to-list 'load-path (expand-file-name "runtime" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "cnf" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "pkg" user-emacs-directory))          
+(add-to-list 'load-path (expand-file-name "lang" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 ;;
-; Bootstrap config
+; Bootstrap runtime
 ;;
 (require 'runtime-benchmark)
 (require 'runtime-pkg)
 (require 'runtime-lib)
 
-(setq inhibit-default-init t)
-
+;;
+; Load config
+;;
+(require 'cnf-ui)
+(require 'cnf-edit)
+(require 'cnf-linum)
+(require 'cnf-indent)
+(require 'cnf-setting)
+(require 'cnf-keybinding)
+(require 'cnf-locale)
+(require 'cnf-backup)
+(require 'cnf-auto-save)
 
 ;;
-; Load up other packages
+; Install dependencies
 ;;
-(run-with-idle-timer
- 1 nil #'(lambda () (require 'cnf-backup)
-                    (require 'cnf-auto-save)))
+(require-pkg 'nlinum)
 
 
-(setq garbage-collection-messages t)
 
 
-(setq custom-file (expand-file-name "custom.el" (concat user-emacs-directory "runtime")))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file) (load custom-file))
   
 (provide 'init)
