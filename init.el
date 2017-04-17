@@ -29,6 +29,7 @@
 ;;
 (require 'runtime-benchmark)
 (require 'runtime-pkg)
+(require 'runtime-lib)
 
 (setq inhibit-default-init t)
 
