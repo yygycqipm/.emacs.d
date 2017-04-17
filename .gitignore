@@ -1,9 +1,4 @@
-# Compiled
-*.elc
-
-# Packaging
-.cask
-
 /.idea
-/pkg
+/pkg/*
 !/pkg/README.md
+network-security.data
