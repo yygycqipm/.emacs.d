@@ -11,18 +11,18 @@
 ;;
 ; Optimize garbage collection
 ;;
-(defconst *gc-cons-threshold gc-cons-threshold)
+(defconst gc-cons-threshold' gc-cons-threshold)
 (setq gc-cons-threshold (* 128 1024 1024))
 (add-hook 'after-init-hook
-          (lambda () (setq gc-cons-threshold *gc-cons-threshold)))
+          (lambda () (setq gc-cons-threshold gc-cons-threshold')))
 
 ;;
 ; Load path
 ;;
-(add-to-list 'load-path (expand-file-name "runtime" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "cnf" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "pkg" user-emacs-directory))          
-(add-to-list 'load-path (expand-file-name "lang" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "run" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "pref" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lang" user-emacs-directory))          
+(add-to-list 'load-path (expand-file-name "pkg" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
 ;;
