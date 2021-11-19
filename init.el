@@ -1,59 +1,40 @@
-;;; init.el -*- coding: utf-8; lexical-binding: t -*- 
-
-;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
-;;(setq debug-on-error t)
-
-;;
-; Adjust garbage collection thresholds during startup, and thereafter
-;;
-(defconst gc-cons-threshold' gc-cons-threshold)
-(setq gc-cons-threshold (* 128 1024 1024))
-(add-hook 'after-init-hook
-          (lambda () (setq gc-cons-threshold gc-cons-threshold')))
+;;; init.el -*- lexical-binding: t -*-
 
 ;;
 ; Load path
 ;;
-(add-to-list 'load-path (expand-file-name "run" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "pref" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lang" user-emacs-directory))          
-(add-to-list 'load-path (expand-file-name "pkg" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "pkgs" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 
-;;
-; Bootstrap runtime
-;;
-(require 'runtime-benchmark)
-(require 'runtime-pkg)
-(require 'runtime-lib)
+(setq custom-file (locate-user-emacs-file "custom.el"))
 
-;;
-; Load config
-;;
-(require 'cnf-ui)
-(require 'cnf-edit)
-(require 'cnf-linum)
-(require 'cnf-indent)
-(require 'cnf-setting)
-(require 'cnf-keybinding)
-(require 'cnf-locale)
-(require 'cnf-backup)
-(require 'cnf-auto-save)
+(require 'env)
+(require 'ver)
+(require 'os)
+(require 'gc)
+(require 'benchmarking)
+(require 'ui)
+(require 'setting)
+(require 'pkg)
+(require 'meta-x)
+(require 'locale)
 
-;;
-; Install dependencies
-;;
-(require-pkg 'nlinum)
+(require 'pkg-dashboard)
+(require 'pkg-doom-themes)
+(require 'pkg-doom-modeline)
+(require 'pkg-all-the-icons)
+(require 'pkg-page-break-lines)
+(require 'pkg-ivy)
+(require 'pkg-projectile)
+(require 'pkg-treemacs)
+(require 'pkg-magit)
+(require 'pkg-persp)
 
-
-
-
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;; Variables configured via the interactive 'customize' interface
 (when (file-exists-p custom-file) (load custom-file))
-  
+
 (provide 'init)
 
-;; Local Variables:
-;; no-byte-compile: t
-;; End:
 ;;; init.el ends here

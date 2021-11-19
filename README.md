@@ -1,4 +1,0 @@
-
-
-var:xxx
-*var:xxx*
