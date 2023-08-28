@@ -1,42 +1,25 @@
 ;;; pkg.el -*- lexical-binding: t -*-
 
+;; Upon starting up Emacs for the first time, further third-party
+;; packages will be automatically downloaded and installed. If you
+;; encounter any errors at that stage, try restarting Emacs, and possibly
+;; running `M-x package-refresh-contents` before doing so.
+
 (require 'package)
 
-(setq
-      package--init-file-ensured t
-      package-enable-at-startup nil
-      package-user-dir (expand-file-name "pkgs" user-emacs-directory)
-      package-archives '(
-          ;; Official mirror repository
-          ;; ("gnu" . "https://elpa.gnu.org/packages/")
-          ;; ("melpa" . "https://melpa.org/packages/")
-          ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
-
-          ;; Tencent mirror repository
-          ;; ("gnu" . "https://mirrors.cloud.tencent.com/elpa/gnu/")
-          ;; ("melpa" . "https://mirrors.cloud.tencent.com/elpa/melpa/")
-          ;; ("melpa-stable" . "https://mirrors.cloud.tencent.com/elpa/stable-melpa/")
-
-          ;; 163 mirror repository
-          ;; ("gnu" . "https://mirrors.163.com/elpa/gnu/")
-          ;; ("melpa" . "https://mirrors.163.com/elpa/melpa/")
-          ;; ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/")
-      
-          ;; Tsinghua mirror repository
-          ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-          ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
-          ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ))
+(setq package--init-file-ensured t)
+(setq package-enable-at-startup nil)
+(setq package-user-dir (expand-file-name "pkgs" user-emacs-directory))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")))
 
 (package-initialize)
 
-;; Install `use-package'
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
 
-;; Load `use-package'
 (eval-and-compile
   (setq use-package-always-ensure t)
   (setq use-package-always-defer t)

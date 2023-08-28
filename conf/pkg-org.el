@@ -1,4 +1,4 @@
-;;; pkg-magit.el
+;;; pkg-q.el
 
 (use-package magit)
 

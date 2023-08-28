@@ -4,7 +4,7 @@
   :init  (load-theme 'doom-one t)
   :config
   (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
+        doom-themes-enable-italic nil)
  
   (doom-themes-visual-bell-config)
   (setq doom-themes-treemacs-theme "doom-colors")

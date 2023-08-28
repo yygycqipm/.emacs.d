@@ -1,1 +1,1 @@
-Here is a place for 3rd packages.
+This is a place for packages in MELPA or other package repositories.
