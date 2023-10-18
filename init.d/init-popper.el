@@ -1,7 +1,7 @@
-;;; pkg-popper.el
-;;; Homepage: https://github.com/karthink/popper
+;;; init-popper.el
 
 (use-package popper
+  :defer t
   :bind (("C-`"   . popper-toggle-latest)
          ("M-`"   . popper-cycle)
          ("C-M-`" . popper-toggle-type))
@@ -22,6 +22,6 @@
   (popper-mode +1)
   (popper-echo-mode +1))
 
-(provide 'pkg-popper)
+(provide 'init-popper)
 
-;;; pkg-popper ends here
+;;; init-popper ends here

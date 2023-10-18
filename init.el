@@ -1,49 +1,49 @@
 ;;; init.el -*- lexical-binding: t -*-
 
-;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
-;; (setq debug-on-error t)
-
-;; Adjust garbage collection thresholds during startup, and thereafter
-(defconst helper/gc-cons-threshold gc-cons-threshold)
-(defconst helper/gc-cons-percentage gc-cons-percentage)
-(setq gc-cons-threshold (* 128 1024 1024))
-(setq gc-cons-percentage 0.5)
-(add-hook 'emacs-startup-hook
-          (lambda () (setq gc-cons-threshold helper/gc-cons-threshold gc-cons-percentage helper/gc-cons-percentage)))
-
-(add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))        
-(add-to-list 'load-path (expand-file-name "pkgs" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "init.d" user-emacs-directory))        
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
-(require 'settings)
-(require 'pkg)
-(require 'pkg-dashboard)
-(require 'pkg-doom-themes)
-(require 'pkg-doom-modeline)
-(require 'pkg-page-break-lines)
-(require 'pkg-all-the-icons)
-(require 'pkg-projectile)
-(require 'pkg-magit)
-(require 'pkg-popper)
-(require 'pkg-vertico)
+(require 'init-straight)
+(require 'init-settings)
+(require 'init-dashboard)
+(require 'init-eww)
+(require 'init-nerd-icons-dired)
+(require 'init-nerd-icons)
+(require 'init-page-break-lines)
+(require 'init-doom-themes)
+(require 'init-doom-modeline)
+(require 'init-popper)
+(require 'init-ace-window)
+
+(require 'init-vertico)
+(require 'init-marginalia)
+(require 'init-nerd-icons-completion)
 (require 'pkg-consult)
 (require 'pkg-embark)
 (require 'pkg-embark-consult)
-(require 'pkg-marginalia)
+
 (require 'pkg-orderless)
 (require 'pkg-wgrep)
-(require 'pkg-which-key)
-(require 'pkg-restart-emacs)
+(require 'init-which-key)
+(require 'init-rainbow-mode)
+(require 'init-smartparens)
+(require 'init-rainbow-delimiters)
+(require 'init-auto-highlight-symbol)
+(require 'pkg-magit)
+(require 'init-treesit)
+(require 'init-eglot)
+(require 'init-python-ts-mode)
 (require 'pkg-yasnippet)
-(require 'pkg-flycheck)
-;; (require 'pkg-eglot)
-(require 'pkg-rainbow-delimiters)
+
+(require 'init-corfu)
+
+(require 'init-flymake)
 (require 'pkg-slime)
+(require 'pkg-markdown-mode)
+(require 'init-esup)
 
-
-
-;; Variables configured via the interactive 'customize' interface
+;; Variables initigured via the interactive 'customize' interface
 (when (file-exists-p custom-file) (load custom-file))
 
 (provide 'init)

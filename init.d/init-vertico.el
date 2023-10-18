@@ -1,4 +1,4 @@
-;;; pkg-vertico.el
+;;; init-vertico.el
 
 (use-package vertico
   :init
@@ -6,6 +6,6 @@
   :config
   (setq vertico-cycle t))
 
-(provide 'pkg-vertico)
+(provide 'init-vertico)
 
-;;; pkg-vertico.el ends here
+;;; init-vertico.el ends here

@@ -4,7 +4,7 @@
   :bind (([remap switch-to-buffer] . consult-buffer)
          ([remap goto-line] . consult-goto-line)
          ([remap yank-pop]. consult-yank-pop)
-         ("M-g f" . consult-flycheck)
+         ("M-g f" . consult-flymake)
          ("M-g i" . consult-imenu)
          ("M-g I" . consult-imenu-multi)
          ("M-s d" . consult-find)
@@ -59,8 +59,8 @@
   ;; Both < and C-+ work reasonably well.
   (setq consult-narrow-key "<") ;; "C-+"
 
-  (autoload 'projectile-project-root "projectile")
-  (setq consult-project-function (lambda (_) (projectile-project-root))))
+
+  )
 
 (provide 'pkg-consult)
 
